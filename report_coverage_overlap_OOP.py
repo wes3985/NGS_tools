@@ -7,6 +7,7 @@ Created on Wed Aug 15 16:25:00 2018
 
 from itertools import combinations
 from collections import OrderedDict
+import sys
 
 class CoverageReport(object):
     
@@ -88,9 +89,5 @@ def get_data(file_handle):
         yield line.split()[2:]
 
 if __name__ == '__main__':
-    #depth_file="//ad.ucl.ac.uk/homeo/rmhawwo/Documents/MEGA/home_share/merged_bam_analysis/test_merged_depth_data.txt"
-    #depth_file="//ad.ucl.ac.uk/homeo/rmhawwo/Documents/MEGA/home_share/merged_bam_analysis/coverage_test_file_100k.txt"
-    depth_file="//ad.ucl.ac.uk/homeo/rmhawwo/Documents/MEGA/home_share/merged_bam_analysis/mergedBAMSchr1.coverage"
-    #outfile_path="//ad.ucl.ac.uk/homeo/rmhawwo/Documents/MEGA/home_share/merged_bam_analysis/coverage_test_file_100k_OUTPUT.txt"
-    outfile_path="//ad.ucl.ac.uk/homeo/rmhawwo/Documents/MEGA/home_share/merged_bam_analysis/mergedBAMSchr1_overlapReport.txt"
-    generate_coverage_report(depth_file, 2, ["AE","BE","HE","C"], outfile_path)
+    # generate_coverage_report(fullPathToDepthFile.coverage, minCoverage, OrderedListOfSamples, FullOutfilePath)
+    generate_coverage_report(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
