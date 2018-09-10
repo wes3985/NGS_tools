@@ -17,7 +17,7 @@ class CoverageReport(object):
         self.coverage,self.groups = self.initiate_report()
         self.count = 0   # KEEP TRACK OF LINES IN FILE
         self.cur_minCov_samples=set()
-        self.minCov = minCov
+        self.minCov = int(minCov)
     # REPRESENTATION METHOD: WHAT WILL BE PRINTED BY DEFAULT IF THE OBJECT IS CALLED
     def __repr__(self):
         return '<Samples and Coverage overlaps: ' + self.coverage +'>'
