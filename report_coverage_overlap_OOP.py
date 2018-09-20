@@ -13,7 +13,7 @@ class CoverageReport(object):
     
     # CONSTRUCTOR
     def __init__(self, samples, minCov):
-        self.samples = samples    # list of samples
+        self.samples = samples.split(',')    # list of samples
         self.coverage,self.groups = self.initiate_report()
         self.count = 0   # KEEP TRACK OF LINES IN FILE
         self.cur_minCov_samples=set()
