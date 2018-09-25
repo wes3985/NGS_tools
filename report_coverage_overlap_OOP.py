@@ -13,7 +13,7 @@ class CoverageReport(object):
     
     # CONSTRUCTOR
     def __init__(self, samples, minCov):
-        self.samples = samples.split(',')    # list of samples
+        self.samples = samples.split(',')    # list of samples supplied as a string
         self.coverage,self.groups = self.initiate_report()
         self.count = 0   # KEEP TRACK OF LINES IN FILE
         self.cur_minCov_samples=set()
@@ -89,5 +89,5 @@ def get_data(file_handle):
         yield line.split()[2:]
 
 if __name__ == '__main__':
-    # generate_coverage_report(fullPathToDepthFile.coverage, minCoverage, OrderedListOfSamples, FullOutfilePath)
+    # generate_coverage_report(fullPathToDepthFile.coverage, minCoverage, CommaSepOrderedListOfSamplesAsSingleString, FullOutfilePath)
     generate_coverage_report(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
