@@ -65,7 +65,7 @@ def generate_summary(bin_file_directory,SampleName,outfile_path):
     with open(outfile_path, 'w') as w:
         w.write('SAMPLE,CHROM,NBINS,NONZEROBINS,BINCOVFRACTION\n')
         for c in chrom_reports:
-            w.write(c.SampleName+','+c.chrName.strip('_')[0]+','+str(c.BinCount)+','+str(c.NonZeroBinCount)+','+str(c.NonZeroBinCount/c.BinCount)+'\n')
+            w.write(c.SampleName+','+c.chrName.strip('_')+','+str(c.BinCount)+','+str(c.NonZeroBinCount)+','+str(c.NonZeroBinCount/c.BinCount)+'\n')
         
     
 # GENERATOR FUNCTION
@@ -75,9 +75,10 @@ def get_data(file_handle):
         
 if __name__ == '__main__':
     # generate_coverage_report(DirectoryContainingBinFiles, SampleName, FullOutfilePath)
-    samples=["4AE","11HE","14AE","15AE","18HE","22AE","23AE","161724BE","AE21-35","AE3-45","AE46-55","AE61-80","BE1-2","BE1-8","BE2","BE9-13","HE2-4-5-6","HE8-9","HE8-15","HE17-24","PBMC"]
+    samples=["4AE","11HE","14AE","15AE","18HE","22AE","23AE","161724BE","AE21-35","AE36-45","AE46-55","AE61-80","BE1-2","BE1-8","BE2","BE9-13","HE2-4-5-6","HE8-9","HE8-15","HE17-24","PBMC"]
     report_path="C:/Users/wes/Documents/batch2_LCM_binCov_data"
     for s in samples:
+        print(s)
         generate_summary(os.path.join(report_path,'coverage_'+s),s,os.path.join(report_path,'binReport_'+s+'.csv'))
     #generate_summary("C:/Users/wes/Documents/batch2_LCM_binCov_data/coverage_11HE","11HE","C:/Users/wes/Documents/batch2_LCM_binCov_data/binReport_11HE.csv")
     #generate_coverage_report(sys.argv[1], sys.argv[2], sys.argv[3])
