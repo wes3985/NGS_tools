@@ -1,8 +1,8 @@
 #!/bin/bash -l
-#$ -l h_rt=10:00:00
+#$ -l h_rt=12:00:00
 #$ -cwd
 #$ -l mem=4G
-#$ -pe smp 12
+#$ -pe smp 16
 
 # TAKES 4-5 HOURS WITH cfDNA EXOME WITH 12 CORES, 4G Mem per core
 
@@ -25,12 +25,12 @@ n_bam=$3
 path_to_ref=$4
 dbSNP=$5
 outpath=$6
-# target_regions=$7
+target_regions=$7
 
 
 # EXTENTIONS
 # ext1="."$target_regions".BQSR.vcf"
-ext1=".MuTect2.vcf"
+ext1="."$target_regions".MuTect2.vcf"
 
 # LOAD MODULES
 module load java/1.8.0_45
@@ -58,9 +58,8 @@ GenomeAnalysisTK \
      -nct 12 \
      --dbsnp $dbSNP \
      -minPruning 3 \
-     --disable-read-filter MateOnSameContigOrNoMappedMateReadFilter \
-     -o $outpath/$sample$ext1
-     # -L $target_regions 
-
+     -o $outpath/$sample$ext1 \
+     -L $target_regions 
+# --disable-read-filter MateOnSameContigOrNoMappedMateReadFilter 
 	 
 date +%Y%m%d%H%M%S
