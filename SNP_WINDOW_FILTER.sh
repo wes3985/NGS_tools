@@ -1,6 +1,7 @@
 #!/bin/bash -l
-#$ -l h_rt=2:00:00
+#$ -l h_rt=6:00:00
 #$ -cwd
+#$ -pe smp 1
 
 # EXAMPLE USAGE: 
 # qsub $HOME/Scratch/git_single_cell_sequencing_scripts/SNP_WINDOW_FILTER.sh IPF010_Chr1 \

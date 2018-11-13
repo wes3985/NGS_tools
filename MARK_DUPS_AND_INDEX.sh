@@ -1,7 +1,8 @@
 #!/bin/bash -l
 #$ -l h_rt=12:00:00
 #$ -cwd
-#$ -pe smp 6
+#$ -pe smp 12
+#$ -l mem=16G
 
 sample=$1
 bam_path=$2
@@ -23,7 +24,7 @@ export CSD_temp=$HOME/Scratch/batch1_wgs_workflow/CSD_temp
 echo "marking duplicates for "$sample
 echo "outpath: "$outpath
 echo "bam_path: "$bam_path
-java -Xmx2g -jar $PICARDPATH/picard.jar MarkDuplicates I=$bam_path O=$outpath/$sample$bamExt M=$outpath/$sample$metExt TMP_DIR=$CSD_temp
+java -Xmx2g -jar $PICARDPATH/picard.jar MarkDuplicates MAX_RECORDS_IN_RAM=250000 I=$bam_path O=$outpath/$sample$bamExt M=$outpath/$sample$metExt TMP_DIR=$CSD_temp
 echo "producing index for "$sample
 samtools index $outpath/$sample$bamExt
 echo "complete"

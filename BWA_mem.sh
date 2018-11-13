@@ -1,7 +1,7 @@
 #!/bin/bash -l
-#$ -l h_rt=12:00:00
+#$ -l h_rt=16:00:00
 #$ -cwd
-#$ -pe smp 12
+#$ -pe smp 16
 
 prefix=$1
 outpath=$2
@@ -31,10 +31,10 @@ echo $outpath
 if [[ ! $fqR = *[!\ ]* ]]
 then
 echo 'map as unpaired'
-$bwa mem -M -t 12 $path_to_ref $fqF | samtools sort -@12 -O bam -o $outpath/$prefix$out_ext -
+$bwa mem -M -t 16 $path_to_ref $fqF | samtools sort -@16 -O bam -o $outpath/$prefix$out_ext -
 else
 echo 'map as paired'
 # THE '-' TELLS samtools view to read from stdin
-$bwa mem -M -t 12 $path_to_ref $fqF $fqR | samtools sort -@12 -O bam -o $outpath/$prefix$out_ext -
+$bwa mem -M -t 16 $path_to_ref $fqF $fqR | samtools sort -@16 -O bam -o $outpath/$prefix$out_ext -
 fi
 

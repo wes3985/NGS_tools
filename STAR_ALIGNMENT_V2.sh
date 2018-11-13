@@ -44,7 +44,10 @@ $STAR --runThreadN $threads \
 	--quantMode TranscriptomeSAM \
 	--chimSegmentMin 20 \
 	--outWigType bedGraph \
-	--alignIntronMax INTRONMAX
+	--alignIntronMax INTRONMAX \
+	--outFilterMatchNminOverLread 0 \
+	--outFilterScoreMinOverLread 0 \
+	--outFilterMatchNmin  40
 		
 
 date +%Y%m%d%H%M%S

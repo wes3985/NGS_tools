@@ -29,10 +29,11 @@ chrom=$(echo $location | awk -F":" '{print $1}')
 
 
 # REFERENCE GENOME
-#path_to_ref=$HOME/Scratch/BAM_files/hg37/human_g1k_v37.fasta
-path_to_ref=$HOME/Scratch/BAM_files/hg38.fa
-#dbSNP=$HOME/Scratch/BAM_files/hg37/dbsnp_138.b37.vcf.gz
-dbSNP=$HOME/Scratch/BAM_files/dbsnp_146.hg38.vcf.gz
+# path_to_ref=$HOME/Scratch/BAM_files/hg37/human_g1k_v37.fasta
+# path_to_ref=$HOME/Scratch/BAM_files/hg38.fa
+# dbSNP=$HOME/Scratch/BAM_files/hg37/dbsnp_138.b37.vcf.gz
+path_to_ref=$HOME/Scratch/batch1_wgs_workflow/HG38_GATK_ref/Homo_sapiens_assembly38.fasta
+dbSNP=$HOME/Scratch/batch1_wgs_workflow/HG38_GATK_ref/Homo_sapiens_assembly38.dbsnp138.vcf
 
 # EXTENTIONS
 outExt=".HaplotypeCaller.vcf"
@@ -58,7 +59,7 @@ GenomeAnalysisTK -T HaplotypeCaller \
 	-stand_call_conf 20.0 \
 	-stand_emit_conf 20 \
 	--monitorThreadEfficiency \
-	-o $outpath/$sample$chrom$outExt 
+	-o $outpath/$sample$location$outExt 
 		
 echo "complete"
 date +%Y%m%d%H%M%S

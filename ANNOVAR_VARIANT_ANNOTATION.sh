@@ -1,6 +1,7 @@
 !/bin/bash -l
 #$ -l h_rt=4:00:00
 #$ -cwd
+#$ -pe smp 1
 
 # SUGGEST TO USE "ChrNTNBC" FOR SAMPLE
 sample=$1
