@@ -1,7 +1,8 @@
 #!/bin/bash -l
-#$ -l h_rt=12:00:00
+#$ -l h_rt=24:00:00
 #$ -cwd
 #$ -pe smp 12
+#$ -l mem=16G
 
 prefix=$1
 infile=$2
@@ -17,6 +18,8 @@ ext=".sorted.bam"
 
 module load samtools/1.3.1/gnu-4.9.2
 
-samtools sort -@ 12 -T $prefix -o $outdir/$prefix$ext $infile
+echo "start"
+samtools sort -@ 12 -m 16G -T $prefix -o $outdir/$prefix$ext $infile
 
 samtools index $outdir/$prefix$ext
+echo "end"

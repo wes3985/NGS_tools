@@ -2,7 +2,7 @@
 #$ -l h_rt=12:00:00
 #$ -cwd
 #$ -l mem=4G
-#$ -pe smp 16
+#$ -pe smp 12
 
 # TAKES 4-5 HOURS WITH cfDNA EXOME WITH 12 CORES, 4G Mem per core
 
@@ -59,7 +59,8 @@ GenomeAnalysisTK \
      --dbsnp $dbSNP \
      -minPruning 3 \
      -o $outpath/$sample$ext1 \
-     -L $target_regions 
+     -L $target_regions \
+     -rf BadCigar
 # --disable-read-filter MateOnSameContigOrNoMappedMateReadFilter 
 	 
 date +%Y%m%d%H%M%S

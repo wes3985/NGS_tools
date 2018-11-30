@@ -1,7 +1,7 @@
 #!/bin/bash -l
-#$ -l h_rt=16:00:00
+#$ -l h_rt=12:00:00
 #$ -cwd
-#$ -pe smp 4
+#$ -pe smp 12
 
 bamFullPathsList=$1
 merged=$2
@@ -18,5 +18,4 @@ ext=".bam"
 
 module load samtools/1.3.1/gnu-4.9.2
 
-# samtools merge -nur1f -h $headers -@ 4 -b $bamFullPathsList $outdir/$merged$ext
-samtools merge -nur1f -@ 4 $outdir/$merged$ext -b $bamFullPathsList 
+samtools merge -nur1f -@ 12 -b $bamFullPathsList $outdir/$merged$ext

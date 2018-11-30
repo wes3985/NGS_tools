@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#$ -l h_rt=16:00:00
+#$ -l h_rt=24:00:00
 #$ -cwd
 # #$ -pe smp 4
 
